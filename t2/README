@@ -1,0 +1,60 @@
+IORDACHE Madalina Gabriela 323CA
+-------------------------------------------------------------------------------
+---------------------------- TEMA 2 - IOCLA - 2021 ----------------------------
+------------------------- 22 NOV 2021 - 12 DEC 2021 ---------------------------
+-------------------------------------------------------------------------------
+--------------------- Introducere in limbajul de asamblare --------------------
+-------------------- Rolul registrelor. Moduri de adresare --------------------
+------------------------- Structuri. Vectori. Siruri --------------------------
+-------------------------------------------------------------------------------
+
+(*) TASK1: funcția de criptare Reverse One Time Pad
+
+    - creez o bucla pentru care initializez un contor in registrul ebx
+    - iau un registru al de un byte si copiez in el cate
+    o litera din mesajul plaintext
+    - in registrul ecx se retine lungimea cheii si a mesajului plaintext
+    - decrementez lungimea acestui string
+    - voi efectua operația XOR între mesajul său plaintext și cheia inversată 
+    key, ambele de lungime len, dupa care incrementez lungimea stringului
+    - copiez in registrul al de un byte cate o litera din mesajul meu codat
+    - incrementez contorul ebx pentru a itera prin bucla
+
+(*) TASK2: Ages -> funcție care calculează vârsta coechipierilor săi știind 
+           când s-au născut și care este data curentă
+
+    - CAZUL 1 -> luna curenta mai mica decat luna nasterii
+    - retin in registrul eax diferenta anilor intre data curenta si data
+    nasterii
+    - mut in dx luna curenta
+    - compar luna curenta cu luna in care s-a nascut
+    - daca luna curenta mai mica decat luna nasterii, scad 1 la diferenta 
+    dintre ani
+
+    - CAZUL 2 -> luna curenta este mai mare decat luna nasterii
+    - mut in dx luna curenta
+    - compar luna curenta cu luna in care s-a nascut
+    - daca luna curenta este mai mare decat luna nasterii mut in rezultatul
+    functiei diferenta anilor dintre present si dates; rezultatul functiei,
+    all_ages este un vector care cuprinde toate datele de naștere ale 
+    coechipierilor lui Biju
+    
+    - CAZUL 3 -> ziua nasterii mai mica decat ziua curenta
+    - mut in dx ziua curenta
+    - compar ziua curenta cu ziua in care s-a nascut
+    - daca ziua nasterii este mai mica decat ziua curenta mut in rezultatul
+    functiei diferenta anilor dintre present si dates
+
+
+(*) TASK3: Columnar Transposition Cipher
+
+    - pentru implementarea acestui task am creat doua for-uri pentru care 
+    am setat cate un contor i(retinut in eax) si j(retinut in ecx), pe fiecare
+    initializandu-l cu 0
+    - in primul for (first_loop) compar conotul i retinut in registrul eax cu
+    lungimea cheii, iar daca este mai mare sau egal se termina programul
+    - in al doilea for (second_loop) salvez valoarea lui key[i] in registrul
+    edx, salvez valorile din registrele eax, edx pe stiva pentru a le restaura
+    mai tarziu; ma mut apoi la urmatorul element din haystack, ajung la pozitia
+    dorita si verific ca aceasta sa nu depaseasca dimensiunile matricei noastre
+
